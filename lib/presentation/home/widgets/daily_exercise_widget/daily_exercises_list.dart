@@ -1,7 +1,7 @@
 import 'package:fitness_app_flutter/presentation/home/controller/exercise_item.dart';
 import 'package:flutter/material.dart';
 
-import 'daily_exercise.dart';
+//import 'daily_exercise.dart';
 
 class DailyExercisesList extends StatefulWidget {
   const DailyExercisesList({Key? key, required this.exercises})

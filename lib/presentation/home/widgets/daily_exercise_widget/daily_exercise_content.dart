@@ -22,31 +22,30 @@ class DailyExerciseContent extends StatelessWidget {
         ),
         Row(
           children: [
-            Row(
-              children: [
-                SvgAssets.iconClock,
-                const SizedBox(width: 4),
-                Text("$durationMinutes min",
-                  style: TextStyles.poppins14(
-                    color: CustomColors.yellowGreen,
-                    fontWeight: FontWeight.w500,
-                  ),
-                )
-              ],
+            SvgAssets.iconClock,
+
+            const SizedBox(width: 4),
+
+            Text("$durationMinutes min",
+              style: TextStyles.poppins14(
+                color: CustomColors.yellowGreen,
+                fontWeight: FontWeight.w500,
+              ),
             ),
+
             const SizedBox(width: 16),
-            Row(
-              children: [
-                SvgAssets.iconFire,
-                const SizedBox(width: 4),
-                Text("$caloriesCount cal",
-                  style: TextStyles.poppins14(
-                    color: CustomColors.uclaGold,
-                    fontWeight: FontWeight.w500,
-                  ),
-                )
-              ],
+
+            SvgAssets.iconFire,
+
+            const SizedBox(width: 4),
+
+            Text("$caloriesCount cal",
+              style: TextStyles.poppins14(
+                color: CustomColors.uclaGold,
+                fontWeight: FontWeight.w500,
+              ),
             ),
+
           ],
         ),
       ],
