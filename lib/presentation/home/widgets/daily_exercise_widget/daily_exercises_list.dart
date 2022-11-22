@@ -19,7 +19,7 @@ class _DailyExercisesListState extends State<DailyExercisesList> {
     return Expanded(
         child: Container(
           //decoration: BoxDecoration(border: Border.all(color: Colors.blueAccent),),
-          child: ListView.builder(
+          /*child: ListView.builder(
             padding: const EdgeInsets.all(0),
             scrollDirection: Axis.vertical,
             itemCount: widget.exercises.length,
@@ -32,7 +32,7 @@ class _DailyExercisesListState extends State<DailyExercisesList> {
                 ],
               );
             },
-          ),
+          ),*/
         )
     );
   }

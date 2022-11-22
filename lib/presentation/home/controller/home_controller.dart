@@ -15,25 +15,31 @@ class HomeController extends GetxController{
   RxList<ExerciseItem> exerciseItems = RxList();
 
   void readJsonFile() async {
-    String jsonString = await rootBundle.loadString(Files.jsonFitnessFilePath);
-    var map = jsonDecode(jsonString);
-    var response = FitnessResponse.fromJson(map);
 
-    goalItems.value = response.goals
-      .map((e) => GoalItem(
-        cover: e.cover,
-        title: e.title,
-        subTitle: e.subTitle,
-        caloriesCount: e.caloriesCount,
-        durationSeconds: e.durationSeconds))
-    .toList();
+    Future.delayed(const Duration(milliseconds: 3000), () async {
+      String jsonString = await rootBundle.loadString(Files.jsonFitnessFilePath);
+      var map = jsonDecode(jsonString);
+      var response = FitnessResponse.fromJson(map);
 
-    exerciseItems.value = response.dailyExercises
-      .map((e) => ExerciseItem(
-        title: e.title,
-        cover: e.cover,
-        caloriesCount: e.caloriesCount,
-        durationSeconds: e.durationSeconds)).toList();
+      goalItems.value = response.goals
+        .map((e) => GoalItem(
+          cover: e.cover,
+          title: e.title,
+          subTitle: e.subTitle,
+          caloriesCount: e.caloriesCount,
+          durationSeconds: e.durationSeconds))
+        .toList();
+
+      exerciseItems.value = response.dailyExercises
+        .map((e) => ExerciseItem(
+          title: e.title,
+          cover: e.cover,
+          caloriesCount: e.caloriesCount,
+          durationSeconds: e.durationSeconds))
+        .toList();
+
+    });
+
 
   }
 
@@ -59,15 +65,15 @@ class HomeController extends GetxController{
       exerciseApiItem.value = fitnessApiResponse.exercises
         .map((e) => ExerciseApiItem(
           title: e.title,
-          image: e.image,
-          duration: e.duration,
+          cover: e.image,
+          durationSeconds: e.duration,
           repetitions: e.repetitions,
-          burnCalories: e.burnCalories,
+          caloriesCount: e.burnCalories,
           plan: e.plan)).toList();
 
     }
     isLoading.value = false;
 
-    print('response code: ${response.statusCode} response: ${response.body}');
+    //print('response code: ${response.statusCode} response: ${response.body}');
   }
 }

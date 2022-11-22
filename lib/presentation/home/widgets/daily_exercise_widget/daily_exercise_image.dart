@@ -13,11 +13,13 @@ class DailyExerciseImage extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
       ),
-      foregroundDecoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        image: DecorationImage(
-            image: NetworkImage(cover),
-            fit: BoxFit.fill
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8.0),
+        child: Image.network(
+          cover,
+          errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+            return Image.asset('resources/images/not_found_icon.png');
+          },
         ),
       ),
     );
