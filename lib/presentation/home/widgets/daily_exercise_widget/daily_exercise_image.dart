@@ -15,12 +15,15 @@ class DailyExerciseImage extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
-        child: Image.network(
-          cover,
-          errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-            return Image.asset('resources/images/not_found_icon.png');
-          },
-        ),
+        child: FittedBox(
+          fit: BoxFit.fill,
+          child: Image.network(
+            cover,
+            errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+              return Image.asset('resources/images/not_found_icon.png');
+            },
+          ),
+        )
       ),
     );
   }
