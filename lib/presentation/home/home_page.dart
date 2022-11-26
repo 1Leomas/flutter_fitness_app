@@ -53,20 +53,23 @@ class _HomePageState extends State<HomePage> {
                 Obx(() => SliverList(
                   delegate: SliverChildBuilderDelegate(
                           (BuildContext context, int i) {
-                        var item = controller.exerciseApiItem[i];
-                        //var item = controller.exerciseItems[i];
+                        //var item = controller.exerciseApiItem[i];
+                        var item = controller.exerciseItems[1];
                         return Column(
                           children: [
-                            controller.exerciseApiItem.isNotEmpty
+                            controller.exerciseItems.isNotEmpty
                                 ? DailyExercise(exercise: item)
                                 : const Center( child: CircularProgressIndicator()),
                             const SizedBox(height: 12),
                           ],
                         );
                       },
-                      childCount: controller.exerciseApiItem.length
+                      childCount: controller.exerciseItems.length+100
                   ),
-                ))
+                )),
+
+
+
               ],
             ),
           )

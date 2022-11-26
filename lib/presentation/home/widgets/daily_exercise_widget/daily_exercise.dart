@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../controller/exercise_api_item.dart';
+import '../../controller/exercise_item.dart';
 import 'daily_exercise_button.dart';
 import 'daily_exercise_content.dart';
 import 'daily_exercise_image.dart';
@@ -8,7 +9,7 @@ import 'daily_exercise_image.dart';
 class DailyExercise extends StatelessWidget {
   const DailyExercise({Key? key, required this.exercise}) : super(key: key);
 
-  final ExerciseApiItem exercise;
+  final ExerciseItem exercise;
 
   @override
   Widget build(BuildContext context) {

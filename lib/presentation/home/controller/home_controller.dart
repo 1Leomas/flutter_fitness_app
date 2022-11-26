@@ -16,35 +16,34 @@ class HomeController extends GetxController{
 
   void readJsonFile() async {
 
-    Future.delayed(const Duration(milliseconds: 3000), () async {
-      String jsonString = await rootBundle.loadString(Files.jsonFitnessFilePath);
-      var map = jsonDecode(jsonString);
-      var response = FitnessResponse.fromJson(map);
+    String jsonString = await rootBundle.loadString(Files.jsonFitnessFilePath);
+    var map = jsonDecode(jsonString);
+    var response = FitnessResponse.fromJson(map);
 
-      goalItems.value = response.goals
+    goalItems.value = response.goals
         .map((e) => GoalItem(
-          cover: e.cover,
-          title: e.title,
-          subTitle: e.subTitle,
-          caloriesCount: e.caloriesCount,
-          durationSeconds: e.durationSeconds))
+        cover: e.cover,
+        title: e.title,
+        subTitle: e.subTitle,
+        caloriesCount: e.caloriesCount,
+        durationSeconds: e.durationSeconds))
         .toList();
 
-      exerciseItems.value = response.dailyExercises
+    exerciseItems.value = response.dailyExercises
         .map((e) => ExerciseItem(
-          title: e.title,
-          cover: e.cover,
-          caloriesCount: e.caloriesCount,
-          durationSeconds: e.durationSeconds))
+        title: e.title,
+        cover: e.cover,
+        caloriesCount: e.caloriesCount,
+        durationSeconds: e.durationSeconds))
         .toList();
 
-    });
+    //print('------ LENGTH ${exerciseItems.length}');
 
 
   }
 
   RxBool isLoading = false.obs;
-  RxList<ExerciseApiItem> exerciseApiItem = RxList();
+  RxList<ExerciseApiItem> exerciseApiItems = RxList();
 
   void getUsers() async {
     isLoading.value = true;
@@ -62,7 +61,7 @@ class HomeController extends GetxController{
       FitnessApiResponse fitnessApiResponse = FitnessApiResponse.fromJson(jsonDecode(response.body));
       //print('response ${fitnessApiResponse.exercises.first.title}');
 
-      exerciseApiItem.value = fitnessApiResponse.exercises
+      exerciseApiItems.value = fitnessApiResponse.exercises
         .map((e) => ExerciseApiItem(
           title: e.title,
           cover: e.image,
@@ -77,3 +76,21 @@ class HomeController extends GetxController{
     //print('response code: ${response.statusCode} response: ${response.body}');
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
