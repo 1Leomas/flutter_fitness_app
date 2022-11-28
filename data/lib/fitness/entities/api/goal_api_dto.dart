@@ -13,14 +13,14 @@ class GoalApiDto {
   @JsonKey(name: 'burn_calories')
   final int burnCalories;
 
-  GoalApiDto({
-    required this.id,
-    required this.image,
-    required this.title,
-    required this.description,
-    required this.durationSeconds,
-    required this.burnCalories,
-  });
+  GoalApiDto(
+    this.id,
+    this.image,
+    this.title,
+    this.description,
+    this.durationSeconds,
+    this.burnCalories,
+  );
 
   factory GoalApiDto.fromJson(Map<String, dynamic> json)
   => _$GoalApiDtoFromJson(json);
