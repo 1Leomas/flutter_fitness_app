@@ -1,7 +1,7 @@
-library di;
+import 'package:di/data_injection_container.dart';
+import 'package:di/domain_injection_container.dart';
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
+Future initDi() async {
+  await initData();
+  await initDomain();
 }
