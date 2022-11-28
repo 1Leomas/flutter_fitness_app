@@ -2,7 +2,7 @@ class Exercise {
   final int id;
   final String title;
   final String image;
-  final int duration;
+  final int durationSeconds;
   final int repetitions;
   final int burnCalories;
   final int plan;
@@ -11,7 +11,7 @@ class Exercise {
       this.id,
       this.title,
       this.image,
-      this.duration,
+      this.durationSeconds,
       this.repetitions,
       this.burnCalories,
       this.plan

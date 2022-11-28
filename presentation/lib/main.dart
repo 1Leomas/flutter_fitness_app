@@ -1,10 +1,12 @@
 //import 'package:device_preview/device_preview.dart';
+import 'package:di/di.dart';
 import 'package:fitness_app_flutter/presentation/fitness/fitness_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
+  await initDi();
   runApp(const MyApp());
 }
 
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(),
-      home: const HomePage(),
+      home: const FitnessPage(),
     );
   }
 }
