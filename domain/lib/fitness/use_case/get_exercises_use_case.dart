@@ -6,8 +6,8 @@ class GetExercisesUseCase {
 
   GetExercisesUseCase(this.repository);
   
-  Stream<List<Exercise>> call() async* {
+  Future<List<Exercise>> call() async {
     //repository.getExercises().then((value) => null);
-    //yield* repository.getExercises();
+    return repository.getExercisesApi();
   }
 }
