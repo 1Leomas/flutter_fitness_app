@@ -1,4 +1,4 @@
-import 'package:fitness_app_flutter/presentation/home/controller/exercise_item.dart';
+import 'package:fitness_app_flutter/presentation/fitness/controller/exercise_item.dart';
 import 'package:flutter/material.dart';
 
 //import 'daily_exercise.dart';

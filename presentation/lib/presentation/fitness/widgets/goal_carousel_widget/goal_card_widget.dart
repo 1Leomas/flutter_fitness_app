@@ -1,4 +1,4 @@
-import 'package:fitness_app_flutter/presentation/home/controller/goal_item.dart';
+import 'package:fitness_app_flutter/presentation/fitness/controller/goal_item.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../resources/custom_colors.dart';
