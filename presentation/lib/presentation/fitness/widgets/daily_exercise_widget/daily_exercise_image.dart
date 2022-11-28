@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DailyExerciseImage extends StatelessWidget {
-  const DailyExerciseImage({Key? key, required this.cover}) : super(key: key);
+  const DailyExerciseImage({Key? key, required this.image}) : super(key: key);
 
-  final String cover;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class DailyExerciseImage extends StatelessWidget {
         child: FittedBox(
           fit: BoxFit.fill,
           child: Image.network(
-            cover,
+            image,
             errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
               return Image.asset('resources/images/not_found_icon.png');
             },

@@ -9,6 +9,7 @@ import '../data_sources/api/fitness_api_data_source.dart';
 class FitnessRepositoryImpl implements FitnessRepository {
 
   final FitnessApiDataSource fitnessApiDataSource;
+
   FitnessRepositoryImpl(this.fitnessApiDataSource);
 
   @override
@@ -18,7 +19,7 @@ class FitnessRepositoryImpl implements FitnessRepository {
   }
 
   @override
-  Future<List<Goal>> getGoalApi() async {
+  Future<List<Goal>> getGoalsApi() async {
     var goals = await fitnessApiDataSource.getGoals();
     return goals.map((e) => GoalMapper().mapApiDtoToModel(e)).toList();
   }

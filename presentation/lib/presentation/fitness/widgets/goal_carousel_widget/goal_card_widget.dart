@@ -1,4 +1,4 @@
-import 'package:fitness_app_flutter/presentation/fitness/controller/goal_item.dart';
+import 'package:domain/fitness/models/goal.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../resources/custom_colors.dart';
@@ -8,7 +8,7 @@ import 'goal_content_widget.dart';
 class GoalCardWidget extends StatelessWidget {
   const GoalCardWidget({Key? key, required this.goal}) : super(key: key);
 
-  final GoalItem goal;
+  final Goal goal;
 
   @override
   Widget build(BuildContext context) {

@@ -5,9 +5,9 @@ import '../../../../resources/svg_assets.dart';
 import '../exercise_properties_widget.dart';
 
 class GoalTimeCalContainer extends StatelessWidget {
-  const GoalTimeCalContainer({super.key, required this.caloriesCount, required this.durationSeconds});
+  const GoalTimeCalContainer({super.key, required this.burnCalories, required this.durationSeconds});
 
-  final int caloriesCount;
+  final int burnCalories;
   final int durationSeconds;
 
   @override
@@ -41,7 +41,7 @@ class GoalTimeCalContainer extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
           child: ExercisePropertiesWidget(
-              content: "$caloriesCount cal",
+              content: "$burnCalories cal",
               color: CustomColors.uclaGold,
               icon: SvgAssets.iconFire),
         ),

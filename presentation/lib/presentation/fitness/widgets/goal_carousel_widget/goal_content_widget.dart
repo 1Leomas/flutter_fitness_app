@@ -1,4 +1,4 @@
-import 'package:fitness_app_flutter/presentation/fitness/controller/goal_item.dart';
+import 'package:domain/fitness/models/goal.dart';
 import 'package:flutter/material.dart';
 
 import 'goal_time_cal_container.dart';
@@ -8,16 +8,16 @@ import 'goal_title_description_widget.dart';
 class GoalContentWidget extends StatelessWidget {
   const GoalContentWidget({Key? key, required this.goal}) : super(key: key);
 
-  final GoalItem goal;
+  final Goal goal;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        GoalImageWidget(cover: goal.cover),
-        GoalTitleDescriptionWidget(title: goal.title, subTitle: goal.subTitle),
-        GoalTimeCalContainer(caloriesCount: goal.caloriesCount, durationSeconds: goal.durationSeconds),
+        GoalImageWidget(image: goal.image),
+        GoalTitleDescriptionWidget(title: goal.title, description: goal.description),
+        GoalTimeCalContainer(burnCalories: goal.burnCalories, durationSeconds: goal.durationSeconds),
       ],
     );
   }

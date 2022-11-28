@@ -1,4 +1,4 @@
-import 'package:fitness_app_flutter/presentation/fitness/controller/exercise_item.dart';
+import 'package:domain/fitness/models/exercise.dart';
 import 'package:flutter/material.dart';
 
 //import 'daily_exercise.dart';
@@ -7,7 +7,7 @@ class DailyExercisesList extends StatefulWidget {
   const DailyExercisesList({Key? key, required this.exercises})
       : super(key: key);
 
-  final List<ExerciseItem> exercises;
+  final List<Exercise> exercises;
 
   @override
   State<DailyExercisesList> createState() => _DailyExercisesListState();

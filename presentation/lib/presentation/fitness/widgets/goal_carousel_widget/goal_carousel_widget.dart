@@ -1,4 +1,4 @@
-import 'package:fitness_app_flutter/presentation/fitness/controller/goal_item.dart';
+import 'package:domain/fitness/models/goal.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,7 +7,7 @@ import 'goal_card_widget.dart';
 class GoalCarouselWidget extends StatefulWidget {
   const GoalCarouselWidget({super.key, required this.goals});
 
-  final RxList<GoalItem> goals;
+  final RxList<Goal> goals;
 
   @override
   State<GoalCarouselWidget> createState() => _GoalCarouselWidgetState();

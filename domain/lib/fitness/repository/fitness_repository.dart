@@ -3,5 +3,5 @@ import '../models/goal.dart';
 
 abstract class FitnessRepository {
   Future<List<Exercise>> getExercisesApi();
-  Future<List<Goal>> getGoalApi();
+  Future<List<Goal>> getGoalsApi();
 }

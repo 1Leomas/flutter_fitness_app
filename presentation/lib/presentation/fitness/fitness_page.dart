@@ -4,21 +4,23 @@ import 'package:get/get.dart';
 
 import '../../resources/custom_colors.dart';
 import '../../resources/strings.dart';
-import 'controller/home_controller.dart';
+import 'controller/fitness_controller.dart';
 import 'widgets/daily_exercise_widget/daily_exercise.dart';
 import 'widgets/goal_carousel_widget/goal_carousel_widget.dart';
 import 'widgets/header_widget.dart';
 
-class _HomePageState extends State<HomePage> {
+class _FitnessPageState extends State<FitnessPage> {
 
   @override
   void initState() {
-    Get.lazyPut(() => HomeController());
-    HomeController controller = Get.find();
+    //Get.lazyPut(() => HomeController());
+    Get.put(FitnessController());
+    FitnessController controller = Get.find();
 
-    controller.readJsonFile();
+    //controller.readJsonFile();
 
-    controller.getUsers();
+    controller.getExercises();
+    controller.getGoals();
 
     super.initState();
   }
@@ -26,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    HomeController controller = Get.find();
+    FitnessController controller = Get.find();
 
     final double statusBarHeight = MediaQuery.of(context).viewPadding.top;
 
@@ -45,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                 const SliverToBoxAdapter(child: HeaderWidget(title: Strings.startNewGoal),),
 
                 SliverToBoxAdapter(
-                    child: GoalCarouselWidget(goals: controller.goalItems)
+                    child: GoalCarouselWidget(goals: controller.goals)
                 ),
 
                 const SliverToBoxAdapter(child: HeaderWidget(title: Strings.dailyTask),),
@@ -53,21 +55,20 @@ class _HomePageState extends State<HomePage> {
                 Obx(() => SliverList(
                   delegate: SliverChildBuilderDelegate(
                           (BuildContext context, int i) {
-                        if( controller.exerciseItems.isNotEmpty) {
+                        if(controller.exercises.isNotEmpty) {
                           //var item = controller.exerciseApiItem[i];
-                          var item = controller.exerciseItems[1];
+                          var exercise = controller.exercises[i];
                           return Column(
                             children: [
-                              DailyExercise(exercise: item),
+                              DailyExercise(exercise: exercise),
                               const SizedBox(height: 12),
                             ],
                           );
                         } else {
-                          return const Center( child: CircularProgressIndicator());
+                          return const Center(child: CircularProgressIndicator());
                         }
-
                       },
-                      childCount: controller.exerciseItems.length+100
+                      childCount: controller.exercises.length//+100
                   ),
                 )),
 
@@ -82,10 +83,10 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class FitnessPage extends StatefulWidget {
+  const FitnessPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<FitnessPage> createState() => _FitnessPageState();
 
 }
