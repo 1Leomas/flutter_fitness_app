@@ -1,11 +1,11 @@
+import 'package:fitness_app_flutter/fitness/fitness_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../resources/custom_colors.dart';
 import '../../resources/strings.dart';
-import 'controller/fitness_controller.dart';
-import 'widgets/daily_exercise_widget/daily_exercise.dart';
+import 'widgets/daily_exercise_widget/daily_exercise_widget.dart';
 import 'widgets/goal_carousel_widget/goal_carousel_widget.dart';
 import 'widgets/header_widget.dart';
 
@@ -36,6 +36,7 @@ class _FitnessPageState extends State<FitnessPage> {
       value: SystemUiOverlayStyle.dark, // play with this
       child: Scaffold(
           body: Container(
+            padding: const EdgeInsets.only(top: 20),
             color: CustomColors.cultured,
             //decoration: BoxDecoration(border: Border.all(color: Colors.red, width: 3),),
 

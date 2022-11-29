@@ -1,9 +1,9 @@
 import 'package:domain/fitness/models/exercise.dart';
 import 'package:flutter/material.dart';
 
-import 'daily_exercise_button.dart';
-import 'daily_exercise_content.dart';
-import 'daily_exercise_image.dart';
+import 'daily_exercise_button_widget.dart';
+import 'daily_exercise_content_widget.dart';
+import 'daily_exercise_image_widget.dart';
 
 class DailyExercise extends StatelessWidget {
   const DailyExercise({Key? key, required this.exercise}) : super(key: key);
