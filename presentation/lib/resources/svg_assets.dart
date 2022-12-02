@@ -4,4 +4,5 @@ class SvgAssets {
   static SvgPicture iconPlay = SvgPicture.asset('resources/svg/icon_play.svg');
   static SvgPicture iconClock = SvgPicture.asset('resources/svg/icon_clock.svg');
   static SvgPicture iconFire = SvgPicture.asset('resources/svg/icon_fire.svg');
+  static SvgPicture svgBack = SvgPicture.asset('resources/svg/svg_back.svg');
 }

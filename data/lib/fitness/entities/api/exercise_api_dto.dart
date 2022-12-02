@@ -24,5 +24,6 @@ class ExerciseApiDto {
 
   factory ExerciseApiDto.fromJson(Map<String, dynamic> json) => _$ExerciseApiDtoFromJson(json);
 
+
   Map<String, dynamic> toJson() => _$ExerciseApiDtoToJson(this);
 }

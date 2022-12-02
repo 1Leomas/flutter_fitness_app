@@ -10,4 +10,5 @@ class CustomColors {
   static const Color cultured = Color(0xFFF5F5F5);
   static const Color white = Color(0xFFFFFFFF);
   static const Color spanishGray = Color(0xFF949E9F);
+  static const Color brightGray = Color(0xFFECECEC);
 }

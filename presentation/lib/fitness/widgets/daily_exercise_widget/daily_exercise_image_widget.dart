@@ -9,14 +9,16 @@ class DailyExerciseImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 48, //48
-      width: 48,  //48
+      //height: 48, //48
+      //width: 48,  //48
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(8),),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
         child: FittedBox(
           fit: BoxFit.fill,
           child: CachedNetworkImage(
+              width: 48,
+              height: 48,
               imageUrl: image,
               placeholder: (BuildContext context, url) => const CircularProgressIndicator(),
               errorWidget: (context, url, error) => const Icon(Icons.error),
