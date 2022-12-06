@@ -8,6 +8,7 @@ class CustomColors {
   static const Color uclaGold =  Color(0xFFFFB605);
   static const Color floralWhite = Color(0xFFFFFAEE);
   static const Color cultured = Color(0xFFF5F5F5);
+  static const Color lotion = Color(0xFFFDFDFD);
   static const Color white = Color(0xFFFFFFFF);
   static const Color spanishGray = Color(0xFF949E9F);
   static const Color brightGray = Color(0xFFECECEC);
