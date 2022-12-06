@@ -14,13 +14,21 @@ class GoalButtonWidget extends StatelessWidget {
         left: 226.0,
         top: 124.0,
       ),
-      height: 40,
-      width: 40,
-      child: FloatingActionButton(
-        elevation: 1,
-        backgroundColor: CustomColors.cultured,
-        onPressed: () {  },
-        child: Container(
+      //height: 40,
+      //width: 40,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: CustomColors.white,
+          elevation: 0.0,
+          shadowColor: CustomColors.cultured,
+          shape: const CircleBorder(
+            side: BorderSide(color: CustomColors.cultured),
+          ),
+        ),
+        onPressed: () { },
+        child: SizedBox(
+          //height: 16,
+          //width: 16,
           child: SvgAssets.iconPlay,
         ),
       ),

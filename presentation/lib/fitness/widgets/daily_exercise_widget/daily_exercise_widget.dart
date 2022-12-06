@@ -25,7 +25,7 @@ class DailyExercise extends StatelessWidget {
               durationSeconds: exercise.durationSeconds,
               caloriesCount: exercise.burnCalories
           ),
-          const DailyExerciseButton(),
+          DailyExerciseButton(exercise: exercise),
         ],
       ),
     );

@@ -21,14 +21,14 @@ class GoalCardWidget extends StatelessWidget {
           color: CustomColors.white,
           //border: Border.all(color: Colors.green,),
           borderRadius: BorderRadius.circular(24),
-          boxShadow: [
+          /*boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.16),
               spreadRadius: 2,
               blurRadius: 24,
               offset: const Offset(0, 2),
             ),
-          ],
+          ],*/
         ),
         child: Material(
           type: MaterialType.transparency,
