@@ -8,7 +8,7 @@ class GoalTimeCalContainer extends StatelessWidget {
   const GoalTimeCalContainer({super.key, required this.burnCalories, required this.durationSeconds});
 
   final int burnCalories;
-  final int durationSeconds;
+  final double durationSeconds;
 
   @override
   Widget build(BuildContext context) {

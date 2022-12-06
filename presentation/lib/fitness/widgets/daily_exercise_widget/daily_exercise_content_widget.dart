@@ -8,12 +8,12 @@ class DailyExerciseContent extends StatelessWidget {
   const DailyExerciseContent({Key? key, required this.title, required this.durationSeconds, required this.caloriesCount}) : super(key: key);
 
   final String title;
-  final int durationSeconds;
+  final double durationSeconds;
   final int caloriesCount;
 
   @override
   Widget build(BuildContext context) {
-    int durationMinutes = (durationSeconds / 60).round();
+    var durationMinutes = (durationSeconds / 60).ceilToDouble();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
