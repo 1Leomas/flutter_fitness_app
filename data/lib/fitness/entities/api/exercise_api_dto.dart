@@ -7,7 +7,7 @@ class ExerciseApiDto {
   final int id;
   final String title;
   final String image;
-  final int duration;
+  final double duration;
   final int repetitions;
   @JsonKey(name: 'burn_calories')
   final int burnCalories;

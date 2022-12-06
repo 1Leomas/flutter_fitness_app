@@ -11,7 +11,7 @@ GoalApiDto _$GoalApiDtoFromJson(Map<String, dynamic> json) => GoalApiDto(
       json['image'] as String,
       json['title'] as String,
       json['description'] as String,
-      json['duration'] as int,
+      (json['duration'] as num).toDouble(),
       json['burn_calories'] as int,
     );
 

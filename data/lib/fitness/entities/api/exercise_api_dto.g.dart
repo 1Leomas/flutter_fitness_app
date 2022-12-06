@@ -11,7 +11,7 @@ ExerciseApiDto _$ExerciseApiDtoFromJson(Map<String, dynamic> json) =>
       json['id'] as int,
       json['title'] as String,
       json['image'] as String,
-      json['duration'] as int,
+      (json['duration'] as num).toDouble(),
       json['repetitions'] as int,
       json['burn_calories'] as int,
       json['plan'] as int,

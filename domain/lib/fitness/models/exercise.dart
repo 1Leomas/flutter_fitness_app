@@ -2,7 +2,7 @@ class Exercise {
   final int id;
   final String title;
   final String image;
-  final int durationSeconds;
+  final double durationSeconds;
   final int repetitions;
   final int burnCalories;
   final int plan;
