@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../fitness/fitness_controller.dart';
 import '../../resources/custom_colors.dart';
 import '../../resources/svg_assets.dart';
 import '../../resources/text_styles.dart';
 
 class ExerciseHeaderWidget extends StatelessWidget {
-  const ExerciseHeaderWidget({Key? key}) : super(key: key);
+  const ExerciseHeaderWidget({Key? key, required this.index}) : super(key: key);
+
+  final int index;
+
+
 
   @override
   Widget build(BuildContext context) {
+
+    FitnessController controller = Get.find();
+
     return Row(
       children: [
         Container(
@@ -25,7 +34,9 @@ class ExerciseHeaderWidget extends StatelessWidget {
                   side: BorderSide(color: CustomColors.brightGray),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Get.back();
+              },
               child: SvgAssets.svgBack
           ),
         ),
@@ -35,7 +46,7 @@ class ExerciseHeaderWidget extends StatelessWidget {
           //decoration: BoxDecoration(border: Border.all(color: Colors.brown, width: 1),),
           child: Center(
             child: Text(
-              "Exercise 1/10",
+              "Exercise $index/${controller.exercises.length}",
               style: TextStyles.poppins16(),
             ),
           ),
