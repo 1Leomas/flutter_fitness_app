@@ -9,9 +9,7 @@ import '../exercise_controller.dart';
 
 
 class ExerciseCountDownTimerWidget extends StatefulWidget {
-  const ExerciseCountDownTimerWidget({Key? key, required this.durationSeconds}) : super(key: key);
-
-  final int durationSeconds;
+  const ExerciseCountDownTimerWidget({Key? key}) : super(key: key);
 
   @override
   State<ExerciseCountDownTimerWidget> createState() => _ExerciseCountDownTimerWidgetState();
@@ -34,8 +32,6 @@ class _ExerciseCountDownTimerWidgetState extends State<ExerciseCountDownTimerWid
     ExerciseController controller = Get.find();
 
     String twoDigits(int n) => n.toString().padLeft(2, '0');
-
-    double time = (widget.durationSeconds > 0) ? (widget.durationSeconds/60).ceilToDouble() : 1;
 
     return Container(
       height: 166,

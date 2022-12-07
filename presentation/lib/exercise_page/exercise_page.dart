@@ -39,6 +39,8 @@ class _ExercisePageState extends State<ExercisePage> {
 
     FitnessController controller = Get.find();
 
+    ExerciseController eController = Get.find();
+
     //print(" curent id: ${widget.exercise.id}");
     //print(" next din controller: ${controller.exercises[widget.exercise.nextExercise!-1].id}");
 
@@ -89,7 +91,7 @@ class _ExercisePageState extends State<ExercisePage> {
 
                 const SizedBox(width: 24),
 
-                ExerciseCountDownTimerWidget(durationSeconds: widget.exercise.durationSeconds),
+                const ExerciseCountDownTimerWidget(),
 
                 const SizedBox(width: 24),
 
