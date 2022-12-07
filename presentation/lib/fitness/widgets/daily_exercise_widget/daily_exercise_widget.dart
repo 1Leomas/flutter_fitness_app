@@ -13,7 +13,7 @@ class DailyExercise extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 16.0, right: 16.0),
+      margin: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 12.0),
       height: 48, //48
       //decoration: BoxDecoration(border: Border.all(color: Colors.red),),
       child: Row(

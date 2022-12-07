@@ -3,7 +3,7 @@ class Goal {
   final String image;
   final String title;
   final String description;
-  final double durationSeconds;
+  final int durationSeconds;
   final int burnCalories;
 
   Goal(

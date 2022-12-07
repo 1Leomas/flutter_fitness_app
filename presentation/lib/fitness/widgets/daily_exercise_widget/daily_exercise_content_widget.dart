@@ -8,12 +8,18 @@ class DailyExerciseContent extends StatelessWidget {
   const DailyExerciseContent({Key? key, required this.title, required this.durationSeconds, required this.caloriesCount}) : super(key: key);
 
   final String title;
-  final double durationSeconds;
+  final int durationSeconds;
   final int caloriesCount;
 
   @override
   Widget build(BuildContext context) {
-    var durationMinutes = (durationSeconds / 60).ceilToDouble();
+    String textDuration = "";
+    if(durationSeconds > 60) {
+      var minutes = (durationSeconds / 60).toStringAsFixed(2);
+      textDuration = "$minutes min";
+    } else {
+      textDuration = "$durationSeconds sec";
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26,7 +32,7 @@ class DailyExerciseContent extends StatelessWidget {
 
             const SizedBox(width: 4),
 
-            Text("$durationMinutes min",
+            Text(textDuration,
               style: TextStyles.poppins14(
                 color: CustomColors.yellowGreen,
                 fontWeight: FontWeight.w500,

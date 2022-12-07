@@ -9,7 +9,7 @@ class GoalApiDto {
   final String title;
   final String description;
   @JsonKey(name: 'duration')
-  final double durationSeconds;
+  final int durationSeconds;
   @JsonKey(name: 'burn_calories')
   final int burnCalories;
 

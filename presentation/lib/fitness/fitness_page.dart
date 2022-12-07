@@ -32,6 +32,8 @@ class _FitnessPageState extends State<FitnessPage> {
 
     final double statusBarHeight = MediaQuery.of(context).viewPadding.top;
 
+    //print("-------- ${controller.exercises.length}");
+
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark, // play with this
       child: Scaffold(
@@ -56,16 +58,14 @@ class _FitnessPageState extends State<FitnessPage> {
                 Obx(() => SliverList(
                   delegate: SliverChildBuilderDelegate(
                           (BuildContext context, int i) {
+
                         if(controller.exercises.isNotEmpty) {
                           //var item = controller.exerciseApiItem[i];
                           var exercise = controller.exercises[i];
-                          return Column(
-                            children: [
-                              DailyExercise(exercise: exercise),
-                              const SizedBox(height: 12),
-                            ],
-                          );
-                        } else {
+                          return DailyExercise(exercise: exercise);
+                        }
+
+                        else {
                           return const Center(child: CircularProgressIndicator());
                         }
                       },

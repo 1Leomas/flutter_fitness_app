@@ -4,7 +4,9 @@ import '../../resources/custom_colors.dart';
 import '../../resources/text_styles.dart';
 
 class ExerciseNextWidget extends StatelessWidget {
-  const ExerciseNextWidget({Key? key}) : super(key: key);
+  const ExerciseNextWidget({Key? key, required this.nextTitle}) : super(key: key);
+
+  final String nextTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class ExerciseNextWidget extends StatelessWidget {
           style: TextStyles.poppins14(color: CustomColors.spanishGray),
         ),
         Text(
-            "Incline Push-Ups",
+          nextTitle,
           style: TextStyles.poppins18(),
         )
       ],

@@ -8,23 +8,6 @@ class ExerciseController extends GetxController {
   final minutes = 0.obs;
   final seconds = 0.obs;
 
-  final buttonState = false.obs;
-  final buttonPause = false.obs;
-
-  changeButtonSate() {
-    buttonState(!(buttonState.value));
-    update();
-  }
-
-  updateHours(int h) {
-    hours(h);
-  }
-  updateMinutes(int m) {
-    minutes(m);
-  }
-  updateSeconds(int s) {
-    seconds(s);
-  }
 
   var duration = Duration().obs;
   var totalDuration = Duration();
@@ -42,7 +25,6 @@ class ExerciseController extends GetxController {
     } else {
       stopTimer(restart: false);
       resetTimer();
-      buttonState(false);
     }
   }
 
@@ -64,7 +46,7 @@ class ExerciseController extends GetxController {
   }
 
   void resetTimer() {
-    duration.value = Duration(hours: hours.value, minutes: minutes.value, seconds: seconds.value);
+    duration.value = Duration(seconds: seconds.value);
     totalDuration = Duration(seconds: duration.value.inSeconds);
     update();
   }

@@ -18,3 +18,7 @@ dev_dependencies:
   json_serializable:
   build_runner:
 
+flutter:
+  assets:
+    - ../presentation/resources/files/
+

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../fitness/fitness_controller.dart';
+import '../../fitness/fitness_page.dart';
 import '../../resources/custom_colors.dart';
 import '../../resources/svg_assets.dart';
 import '../../resources/text_styles.dart';
@@ -35,7 +36,7 @@ class ExerciseHeaderWidget extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Get.back();
+                Get.off(const FitnessPage());
               },
               child: SvgAssets.svgBack
           ),

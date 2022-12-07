@@ -10,6 +10,7 @@ import 'dart:math' as math;
 
 
 import '../fitness/fitness_controller.dart';
+import '../fitness/fitness_page.dart';
 import '../resources/svg_assets.dart';
 import 'exercise_controller.dart';
 import 'widgets/exercise_image_widget.dart';
@@ -25,6 +26,11 @@ class _ExercisePageState extends State<ExercisePage> {
   @override
   void initState() {
     Get.put(ExerciseController());
+
+    ExerciseController controller = Get.find();
+
+    controller.seconds.value = widget.exercise.durationSeconds;
+
     super.initState();
   }
 
@@ -32,6 +38,9 @@ class _ExercisePageState extends State<ExercisePage> {
   Widget build(BuildContext context) {
 
     FitnessController controller = Get.find();
+
+    //print(" curent id: ${widget.exercise.id}");
+    //print(" next din controller: ${controller.exercises[widget.exercise.nextExercise!-1].id}");
 
     return Scaffold(
       body: Container(
@@ -48,7 +57,7 @@ class _ExercisePageState extends State<ExercisePage> {
 
             //const SizedBox(height: 32),
 
-            //ExerciseImageWidget(image: widget.exercise.image),
+            ExerciseImageWidget(image: widget.exercise.image),
 
             //const SizedBox(height: 32),
 
@@ -69,7 +78,10 @@ class _ExercisePageState extends State<ExercisePage> {
                     shape: const CircleBorder(),
                   ),
                   onPressed: () {
-                    Get.to(ExercisePage(exercise: controller.exercises[widget.exercise.id-1]));
+                    Get.off(
+                        ExercisePage(exercise: controller.exercises[widget.exercise.id-2]),
+                        preventDuplicates: false
+                    );
                   },
                   child: SvgAssets.svgBack,
                 )
@@ -90,7 +102,23 @@ class _ExercisePageState extends State<ExercisePage> {
                     shape: const CircleBorder(),
                   ),
                   onPressed: () {
-                    Get.to(ExercisePage(exercise: controller.exercises[widget.exercise.id+1]));
+
+                    /*Get.off(ExercisePage(exercise: widget.exercise));
+  
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        maintainState: false,
+                        builder: (context) => ExercisePage(exercise: controller.exercises[widget.exercise.nextExercise!-1]),
+                      ),
+                    );*/
+                    
+                    if (widget.exercise.nextExercise != null) {
+                      Get.off(
+                          ExercisePage(exercise: controller.exercises[widget.exercise.nextExercise!-1]),
+                          preventDuplicates: false
+                      );
+                    }
                   },
                   child: Transform.rotate(
                     angle: 180 * math.pi / 180,
@@ -104,9 +132,9 @@ class _ExercisePageState extends State<ExercisePage> {
 
 
             //const SizedBox(height: 56),
-            widget.exercise != controller.exercises.last
-                ? ExerciseNextWidget()
-                : Container(),
+            if (widget.exercise != controller.exercises.last && widget.exercise.nextExercise != null)
+              ExerciseNextWidget(nextTitle: controller.exercises[widget.exercise.nextExercise!-1].title)
+            else Container(),
 
           ],
         ),

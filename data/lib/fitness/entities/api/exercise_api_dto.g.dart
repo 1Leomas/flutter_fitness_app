@@ -11,10 +11,11 @@ ExerciseApiDto _$ExerciseApiDtoFromJson(Map<String, dynamic> json) =>
       json['id'] as int,
       json['title'] as String,
       json['image'] as String,
-      (json['duration'] as num).toDouble(),
+      json['duration'] as int,
       json['repetitions'] as int,
       json['burn_calories'] as int,
       json['plan'] as int,
+      json['next_exercise'] as int?,
     );
 
 Map<String, dynamic> _$ExerciseApiDtoToJson(ExerciseApiDto instance) =>
@@ -22,8 +23,9 @@ Map<String, dynamic> _$ExerciseApiDtoToJson(ExerciseApiDto instance) =>
       'id': instance.id,
       'title': instance.title,
       'image': instance.image,
-      'duration': instance.duration,
+      'duration': instance.durationSeconds,
       'repetitions': instance.repetitions,
       'burn_calories': instance.burnCalories,
       'plan': instance.plan,
+      'next_exercise': instance.nextExercise,
     };
