@@ -8,15 +8,15 @@ import '../../entities/api/goal_api_dto.dart';
 import '../../entities/api/goals_response_api_dto.dart';
 
 abstract class FitnessApiDataSource {
-  Future<List<ExerciseApiDto>> getExercises();
+  Future<List<ExerciseApiDto>> getExercises(int page, int limit);
   Future<List<GoalApiDto>> getGoals();
 }
 
 class FitnessApiDataSourceImpl implements FitnessApiDataSource {
   @override
-  Future<List<ExerciseApiDto>> getExercises() async {
+  Future<List<ExerciseApiDto>> getExercises(int page, int limit) async {
 
-    Uri uri = Uri.parse('https://fitness-app-api.k8s.devebs.net/workout/exercise');
+    Uri uri = Uri.parse('https://fitness-app-api.k8s.devebs.net/workout/exercise?page=$page&size=$limit');
 
     var response = await http.get(
       uri,

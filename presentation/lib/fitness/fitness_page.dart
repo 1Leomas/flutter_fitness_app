@@ -1,18 +1,23 @@
 import 'package:fitness_app_flutter/fitness/fitness_controller.dart';
+import 'package:fitness_app_flutter/fitness/models/exercise_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../resources/custom_colors.dart';
 import '../../resources/strings.dart';
+import '../common/bottom_loading_indicator_item.dart';
 import 'widgets/daily_exercise_widget/daily_exercise_widget.dart';
 import 'widgets/goal_carousel_widget/goal_carousel_widget.dart';
 import 'widgets/header_widget.dart';
 
 class _FitnessPageState extends State<FitnessPage> {
+  late ScrollController scrollController;
 
   @override
   void initState() {
+    scrollController = ScrollController();
+
     //Get.lazyPut(() => HomeController());
     Get.put(FitnessController());
     FitnessController controller = Get.find();
@@ -21,6 +26,14 @@ class _FitnessPageState extends State<FitnessPage> {
 
     controller.getExercises();
     controller.getGoals();
+
+    scrollController.addListener(() {
+      var maxScroll = scrollController.position.maxScrollExtent;
+      var currentScroll = scrollController.position.pixels;
+      if (currentScroll >= maxScroll) {
+        controller.getNextPage();
+      }
+    });
 
     super.initState();
   }
@@ -43,6 +56,7 @@ class _FitnessPageState extends State<FitnessPage> {
             //decoration: BoxDecoration(border: Border.all(color: Colors.red, width: 3),),
 
             child: CustomScrollView(
+              controller: scrollController,
               slivers: <Widget>[
 
                 SliverToBoxAdapter(child: SizedBox(height: statusBarHeight),),
@@ -59,17 +73,20 @@ class _FitnessPageState extends State<FitnessPage> {
                   delegate: SliverChildBuilderDelegate(
                           (BuildContext context, int i) {
 
-                        if(controller.exercises.isNotEmpty) {
-                          //var item = controller.exerciseApiItem[i];
-                          var exercise = controller.exercises[i];
-                          return DailyExercise(exercise: exercise);
-                        }
-
-                        else {
+                        if(controller.exercisesList.isEmpty) {
                           return const Center(child: CircularProgressIndicator());
                         }
+
+                        var item = controller.exercisesList[i];
+                        if (item is ExerciseListItem) {
+                          return DailyExercise(exercise: item.exercise);
+                        } else if (item is BottomLoadingIndicatorItem) {
+                          return const Center(child: CircularProgressIndicator());
+                        } else {
+                          return Container();
+                        }
                       },
-                      childCount: controller.exercises.length//+100
+                      childCount: controller.exercisesList.length//+100
                   ),
                 )),
 

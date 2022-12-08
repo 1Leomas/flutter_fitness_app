@@ -13,8 +13,8 @@ class FitnessRepositoryImpl implements FitnessRepository {
   FitnessRepositoryImpl(this.fitnessApiDataSource);
 
   @override
-  Future<List<Exercise>> getExercisesApi() async {
-    var exercises = await fitnessApiDataSource.getExercises();
+  Future<List<Exercise>> getExercisesApi(int page, int limit) async {
+    var exercises = await fitnessApiDataSource.getExercises(page, limit);
     return exercises.map((e) => ExerciseMapper().mapApiDtoToModel(e)).toList();
   }
 
