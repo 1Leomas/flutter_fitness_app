@@ -24,11 +24,16 @@ class FitnessController extends GetxController{
     if(page !=1) await Future.delayed(Duration(seconds: 3));
     getExercisesUseCase.call(GetExercisesParams(page, limit)).then((exercises) {
 
-      print('----------exercises length: ${exercises.length} ---------');
+      //print('----------exercises length: ${exercises.length} ---------');
 
       exercisesList.removeWhere((element) => element is BottomLoadingIndicatorItem);
 
-      exercisesList.addAll(exercises.map((e) => ExerciseListItem(e)).toList());
+      int i = 0;
+      exercisesList.addAll(exercises.map((e) {
+        Exercise ex = Exercise(i, e.title, e.image, e.durationSeconds, e.repetitions, e.burnCalories, e.plan, e.nextExercise);
+        i++;
+        return ExerciseListItem(ex);
+      }).toList());
       
       exercisesList.add(BottomLoadingIndicatorItem());
 

@@ -3,6 +3,7 @@ import 'package:fitness_app_flutter/exercise_page/widgets/exercise_count_down_ti
 import 'package:fitness_app_flutter/exercise_page/widgets/exercise_header_widget.dart';
 import 'package:fitness_app_flutter/exercise_page/widgets/exercise_next_widget.dart';
 import 'package:fitness_app_flutter/exercise_page/widgets/exercise_title_widget.dart';
+import 'package:fitness_app_flutter/fitness/models/exercise_list_item.dart';
 import 'package:fitness_app_flutter/resources/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,7 +11,6 @@ import 'dart:math' as math;
 
 
 import '../fitness/fitness_controller.dart';
-import '../fitness/fitness_page.dart';
 import '../resources/svg_assets.dart';
 import 'exercise_controller.dart';
 import 'widgets/exercise_image_widget.dart';
@@ -39,10 +39,27 @@ class _ExercisePageState extends State<ExercisePage> {
 
     FitnessController controller = Get.find();
 
-    ExerciseController eController = Get.find();
+    Exercise exerciseFirst = (controller.exercisesList.first as ExerciseListItem).exercise;
 
-    //print(" curent id: ${widget.exercise.id}");
-    //print(" next din controller: ${controller.exercises[widget.exercise.nextExercise!-1].id}");
+    Exercise exerciseLast = (controller.exercisesList[controller.exercisesList.length-2] as ExerciseListItem).exercise;
+
+    Exercise exerciseNext = (controller.exercisesList[widget.exercise.id+1] as ExerciseListItem).exercise;
+
+
+    // print(" current id: ${widget.exercise.id}");
+    // print(" next id: ${exerciseNext.id}");
+    // print(" first id : ${exerciseFirst.id}");
+    // print(" last id : ${exerciseLast.id}");
+
+    // for(int i = 0; i < controller.exercisesList.length; i++) {
+    //   var item = controller.exercisesList[i];
+    //   if( item is ExerciseListItem) {
+    //     print("---- i[$i] id: ${item.exercise.id}");
+    //   } else {
+    //     print(" ----i[$i] is not exercise");
+    //   }
+    // }
+
 
     return Scaffold(
       body: Container(
@@ -53,25 +70,17 @@ class _ExercisePageState extends State<ExercisePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            //const SizedBox(height: 48),
-
             ExerciseHeaderWidget(index: widget.exercise.id),
-
-            //const SizedBox(height: 32),
 
             ExerciseImageWidget(image: widget.exercise.image),
 
-            //const SizedBox(height: 32),
-
             ExerciseTitleWidget(title: widget.exercise.title),
-
-            //const SizedBox(height: 32),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
 
-                widget.exercise != controller.exercises.first ?
+                widget.exercise != exerciseFirst ?
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: CustomColors.lotion,
@@ -80,8 +89,11 @@ class _ExercisePageState extends State<ExercisePage> {
                     shape: const CircleBorder(),
                   ),
                   onPressed: () {
+
+                    var exercise = (controller.exercisesList[widget.exercise.id-1] as ExerciseListItem).exercise;
+
                     Get.off(
-                        ExercisePage(exercise: controller.exercises[widget.exercise.id-2]),
+                        ExercisePage(exercise: exercise),
                         preventDuplicates: false
                     );
                   },
@@ -95,7 +107,7 @@ class _ExercisePageState extends State<ExercisePage> {
 
                 const SizedBox(width: 24),
 
-                widget.exercise != controller.exercises.last ?
+                widget.exercise != exerciseLast ?
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: CustomColors.lotion,
@@ -104,23 +116,7 @@ class _ExercisePageState extends State<ExercisePage> {
                     shape: const CircleBorder(),
                   ),
                   onPressed: () {
-
-                    /*Get.off(ExercisePage(exercise: widget.exercise));
-  
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        maintainState: false,
-                        builder: (context) => ExercisePage(exercise: controller.exercises[widget.exercise.nextExercise!-1]),
-                      ),
-                    );*/
-                    
-                    if (widget.exercise.nextExercise != null) {
-                      Get.off(
-                          ExercisePage(exercise: controller.exercises[widget.exercise.nextExercise!-1]),
-                          preventDuplicates: false
-                      );
-                    }
+                    Get.off(ExercisePage(exercise: exerciseNext), preventDuplicates: false);
                   },
                   child: Transform.rotate(
                     angle: 180 * math.pi / 180,
@@ -132,10 +128,8 @@ class _ExercisePageState extends State<ExercisePage> {
               ],
             ),
 
-
-            //const SizedBox(height: 56),
-            if (widget.exercise != controller.exercises.last && widget.exercise.nextExercise != null)
-              ExerciseNextWidget(nextTitle: controller.exercises[widget.exercise.nextExercise!-1].title)
+            if (widget.exercise != exerciseLast)
+              ExerciseNextWidget(nextTitle: exerciseNext.title)
             else Container(),
 
           ],

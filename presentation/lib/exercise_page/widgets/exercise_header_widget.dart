@@ -47,7 +47,7 @@ class ExerciseHeaderWidget extends StatelessWidget {
           //decoration: BoxDecoration(border: Border.all(color: Colors.brown, width: 1),),
           child: Center(
             child: Text(
-              "Exercise $index/${controller.exercises.length}",
+              "Exercise $index/${controller.exercisesList.length}",
               style: TextStyles.poppins16(),
             ),
           ),
