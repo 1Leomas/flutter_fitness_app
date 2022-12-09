@@ -1,10 +1,8 @@
 import 'package:fitness_app_flutter/resources/svg_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:math' as math;
 
 import '../../resources/custom_colors.dart';
-import '../../resources/text_styles.dart';
 import '../exercise_controller.dart';
 
 
@@ -19,10 +17,6 @@ class _ExerciseCountDownTimerWidgetState extends State<ExerciseCountDownTimerWid
 
   @override
   void initState() {
-    ExerciseController controller = Get.find();
-
-    controller.startTimer();
-
     super.initState();
   }
 
@@ -31,17 +25,13 @@ class _ExerciseCountDownTimerWidgetState extends State<ExerciseCountDownTimerWid
 
     ExerciseController controller = Get.find();
 
-    String twoDigits(int n) => n.toString().padLeft(2, '0');
-
     return Container(
       height: 166,
       width: 166,
       //decoration: BoxDecoration(border: Border.all(color: Colors.red, width: 1),),
       child: Obx(() {
 
-        controller.sHours.value = twoDigits(controller.duration.value.inHours.remainder(60));
-        controller.sMinutes.value = twoDigits(controller.duration.value.inMinutes.remainder(60));
-        controller.sSeconds.value = twoDigits(controller.duration.value.inSeconds.remainder(60));
+
 
         return Stack(
         fit: StackFit.expand,
@@ -52,12 +42,34 @@ class _ExerciseCountDownTimerWidgetState extends State<ExerciseCountDownTimerWid
             color: CustomColors.cyanCornflowerBlue,
             strokeWidth: 12,
           ),
-          Center(
-            child: Text(
-              "${controller.sMinutes}:${controller.sSeconds}",
-              style: TextStyles.poppins52(),
-            ),
-          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 60,
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: CustomColors.cyanCornflowerBlue,
+                      elevation: 0.0,
+                      shadowColor: Colors.transparent,
+                      shape: const CircleBorder(
+                        side: BorderSide(color: Colors.transparent),
+                      ),
+                    ),
+                    onPressed: () {
+                      if (controller.countDownIsRunning.isFalse) {
+                        controller.startTimer(restart: false);
+                      } else {
+                        controller.pauseTimer();
+                      }
+
+                      controller.changeButtonState();
+                    },
+                    child: (controller.countDownIsRunning.isTrue) ? SvgAssets.iconPause : SvgAssets.iconPlayWhite
+                ),
+              )
+            ],
+          )
         ],
       );
       })

@@ -31,6 +31,8 @@ class _ExercisePageState extends State<ExercisePage> {
 
     controller.seconds.value = widget.exercise.durationSeconds;
 
+    controller.resetTimer();
+
     super.initState();
   }
 

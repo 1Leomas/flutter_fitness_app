@@ -9,6 +9,12 @@ class ExerciseController extends GetxController {
   final seconds = 0.obs;
 
 
+  final countDownIsRunning = false.obs;
+
+  changeButtonState() {
+    countDownIsRunning.value = !(countDownIsRunning.value);
+  }
+
   var duration = Duration().obs;
   var totalDuration = Duration();
   Timer? timer;
@@ -57,7 +63,7 @@ class ExerciseController extends GetxController {
 
   bool isCompleted() {
     return
-      duration == totalDuration ||
+      duration.value == totalDuration ||
           duration.value.inSeconds == 0;
   }
 

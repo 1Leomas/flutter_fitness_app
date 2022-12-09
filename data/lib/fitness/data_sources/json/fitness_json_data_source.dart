@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import '../../entities/api/exercise_api_dto.dart';
 import '../../entities/api/goal_api_dto.dart';
 
