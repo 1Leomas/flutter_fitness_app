@@ -31,8 +31,6 @@ class _ExerciseCountDownTimerWidgetState extends State<ExerciseCountDownTimerWid
       //decoration: BoxDecoration(border: Border.all(color: Colors.red, width: 1),),
       child: Obx(() {
 
-
-
         return Stack(
         fit: StackFit.expand,
         children: [

@@ -21,8 +21,10 @@ class FitnessController extends GetxController{
   var getGoalsUseCase = GetIt.instance.get<GetGoalsUseCase>();
 
   void getExercises() async {
-    if(page !=1) await Future.delayed(Duration(seconds: 3));
-    getExercisesUseCase.call(GetExercisesParams(page, limit)).then((exercises) {
+
+      if(page !=1) await Future.delayed(const Duration(seconds: 3));
+
+      getExercisesUseCase.call(GetExercisesParams(page, limit)).then((exercises) {
 
       //print('----------exercises length: ${exercises.length} ---------');
 
@@ -53,7 +55,7 @@ class FitnessController extends GetxController{
 
   void getNextPage() {
     if (canGetMoreData) {
-      print("Can get next page");
+      //print("Can get next page");
       canGetMoreData = false;
       getExercises();
     }

@@ -1,6 +1,5 @@
 //import 'package:device_preview/device_preview.dart';
 import 'package:di/di.dart';
-import 'package:fitness_app_flutter/exercise_page/exercise_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
